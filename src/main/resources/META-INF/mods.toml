@@ -23,20 +23,20 @@ versionRange = "${minecraft_version}"
 side = "SERVER"
 
 [[mods]]
-modId = "forcekneel"
-version = "${forcekneel_version}"
-logoFile = "forcekneel_64x64.png"
-displayName = "Force Kneel"
+modId = "force_animation"
+version = "${force_animation_version}"
+logoFile = "force_animation_64x64.png"
+displayName = "Force Animation"
 authors = "Mattéo35"
-description = "Add a command to force players to kneel"
+description = "Add a command to force players to play a animation"
 
-[[dependencies.forcekneel]]
+[[dependencies.force_animation]]
 modId = "forge"
 mandatory = true
 versionRange =  "${forge_version}"
 side = "SERVER"
 
-[[dependencies.forcekneel]]
+[[dependencies.force_animation]]
 modId = "minecraft"
 mandatory = true
 versionRange = "${minecraft_version}"

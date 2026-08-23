@@ -41,11 +41,13 @@ repositories {
                 url = "https://api.modrinth.com/maven"
             }
         }
-        // forRepositories(fg.repository) // Uncomment when using ForgeGradle
+        forRepositories(fg.repository)
         filter {
             includeGroup "maven.modrinth"
         }
     }
+
+    maven {url "https://cursemaven.com" }
 }
 
 dependencies {
@@ -53,12 +55,14 @@ dependencies {
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
     implementation "maven.modrinth:8EWJHAmb:RoiJxIka"
+    implementation fg.deobf("curse.maven:emotecraft-forge-403422:4632460")
+    implementation fg.deobf("curse.maven:playeranimator-658587:4587214")
 }
 
 mixin {
     add sourceSets.main, "down_of_heores_plus.refmap.json"
     config "networklogger.mixins.json"
-    config "forcekneel.mixins.json"
+    config "force_animation.mixins.json"
 }
 
 processResources {
@@ -67,7 +71,7 @@ processResources {
             'dev_forge_version' : dev_forge_version,
             'minecraft_version' : minecraft_version,
             'networklogger_version' : networklogger_version,
-            'forcekneel_version' : forcekneel_version
+            'force_animation_version' : force_animation_version
     ]
 
     filesMatching(["META-INF/mods.toml"]) {
