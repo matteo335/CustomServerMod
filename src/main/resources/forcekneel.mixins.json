@@ -1,0 +1,10 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.matteo.forcekneel.mixins",
+  "server": ["CommandsMixin", "PlayerMixin"],
+  "refmap": "down_of_heores_plus.refmap.json",
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

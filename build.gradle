@@ -1,0 +1,78 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id "org.parchmentmc.librarian.forgegradle" version "1+"
+    id 'org.spongepowered.mixin' version "0.7.+"
+}
+
+base.archivesName = mod_id
+version = mod_version
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+    mappings channel: "parchment", version: mapping_version
+
+    runs {
+        client {
+            taskName "MainDev"
+            workingDirectory = file("run/main_client")
+            args "--username=MainDev"
+        }
+
+        client2 {
+            taskName "OffDev"
+            workingDirectory = file("run/off_dev")
+            args "--username=OffDev"
+        }
+
+        server {
+            taskName "server"
+            jvmArgs("-Xmx8G")
+            workingDirectory = file("run/server")
+        }
+    }
+}
+
+repositories {
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        // forRepositories(fg.repository) // Uncomment when using ForgeGradle
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${dev_minecraft_version}-${dev_forge_version}"
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
+    implementation "maven.modrinth:8EWJHAmb:RoiJxIka"
+}
+
+mixin {
+    add sourceSets.main, "down_of_heores_plus.refmap.json"
+    config "networklogger.mixins.json"
+    config "forcekneel.mixins.json"
+}
+
+processResources {
+    var properties = [
+            'forge_version' : forge_version,
+            'dev_forge_version' : dev_forge_version,
+            'minecraft_version' : minecraft_version,
+            'networklogger_version' : networklogger_version,
+            'forcekneel_version' : forcekneel_version
+    ]
+
+    filesMatching(["META-INF/mods.toml"]) {
+        expand properties
+    }
+
+    inputs.properties(properties)
+}

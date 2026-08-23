@@ -1,0 +1,43 @@
+modLoader = "javafml"
+loaderVersion = "${dev_forge_version}"
+license = "MIT"
+
+[[mods]]
+modId = "networklogger"
+version = "${networklogger_version}"
+displayName = "Network Logger"
+authors= "Mattéo35"
+description = "Log every packet identifiers including their accumulated size"
+
+
+[[dependencies.networklogger]]
+modId = "forge"
+mandatory = true
+versionRange = "${forge_version}"
+side = "SERVER"
+
+[[dependencies.networklogger]]
+modId = "minecraft"
+mandatory = true
+versionRange = "${minecraft_version}"
+side = "SERVER"
+
+[[mods]]
+modId = "forcekneel"
+version = "${forcekneel_version}"
+logoFile = "forcekneel_64x64.png"
+displayName = "Force Kneel"
+authors = "Mattéo35"
+description = "Add a command to force players to kneel"
+
+[[dependencies.forcekneel]]
+modId = "forge"
+mandatory = true
+versionRange =  "${forge_version}"
+side = "SERVER"
+
+[[dependencies.forcekneel]]
+modId = "minecraft"
+mandatory = true
+versionRange = "${minecraft_version}"
+side = "SERVER"
