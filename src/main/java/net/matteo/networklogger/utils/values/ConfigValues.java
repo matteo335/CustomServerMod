@@ -15,6 +15,7 @@ public class ConfigValues {
     public static String stringConnectionStable = "If player started moving, consider their connection stable after X minutes";
 
     public static String stringDeleteFileOnExit = "Delete the profiler and payload folder on game exit";
+    public static String stringIsModEnabled = "Whether the mod is considered enabled or not";
 
     //Value
     public static boolean valueWriteIfContains = false; //Set by config reader
@@ -22,6 +23,7 @@ public class ConfigValues {
     public static boolean valueMessageEnabled = false;
 
     public static boolean valueDeleteFileOnExit = true;
+    public static boolean valueIsModEnabled = true;
 
     public static int valueClearIfPingExcess = 0; //Set by config reader
     public static int valueOnlyCapturePlayerOver = 0; //Set by config reader

@@ -1,6 +1,7 @@
 package net.matteo.networklogger.mixins;
 
 import net.matteo.networklogger.utils.values.ModValues;
+import net.matteo.networklogger.utils.values.ConfigValues;
 
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
@@ -18,7 +19,7 @@ public class MinecraftServerMixin {
 
     @Inject(method = "tickServer", at = @At("TAIL"))
     public void tickServer$networklogger(BooleanSupplier pHasTimeLeft, CallbackInfo ci) {
-        if (!ModValues.enabled) return;
+        if (!ConfigValues.valueIsModEnabled) return;
         MinecraftServer server = (MinecraftServer) (Object) this;
         ModValues.time += 0.05;
 

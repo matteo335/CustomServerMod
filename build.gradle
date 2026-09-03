@@ -60,7 +60,7 @@ dependencies {
 }
 
 mixin {
-    add sourceSets.main, "down_of_heores_plus.refmap.json"
+    add sourceSets.main, "dawn_of_heroes_plus.refmap.json"
     config "networklogger.mixins.json"
     config "force_animation.mixins.json"
 }

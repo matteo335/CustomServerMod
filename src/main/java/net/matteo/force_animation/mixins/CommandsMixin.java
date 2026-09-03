@@ -54,11 +54,11 @@ public abstract class CommandsMixin {
                     if (string.contains("*")) for (ServerPlayer player : playerList.getPlayers()) {
                         player.setForcedPose(null);
 
-                        if (Values.playing_emotecraft_animation.getOrDefault(player, false)) ServerEmoteAPI.forcePlayEmote(player.getUUID(), null);
+                        if (Values.playing_emotecraft_animation.getOrDefault(player, false)) ServerEmoteAPI.setPlayerPlayingEmote(player.getUUID(), null);
                     } else for (ServerPlayer player : players) {
                         player.setForcedPose(null);
 
-                        if (Values.playing_emotecraft_animation.getOrDefault(player, false)) ServerEmoteAPI.forcePlayEmote(player.getUUID(), null);
+                        if (Values.playing_emotecraft_animation.getOrDefault(player, false)) ServerEmoteAPI.setPlayerPlayingEmote(player.getUUID(), null);
                     }
 
                     return 0;

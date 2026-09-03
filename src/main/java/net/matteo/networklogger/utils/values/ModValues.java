@@ -7,8 +7,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 public class ModValues {
-    public static boolean enabled = true;
-
     // Ping Excess
     public static boolean pingExcess = false;
     public static boolean startedPingExcess = false;

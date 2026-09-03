@@ -461,7 +461,8 @@ public class CommandsMixin {
 
                 //networklogger enable
                 .then(Commands.literal("enable").requires(source -> source.hasPermission(4)).executes(command -> {
-                    enabled = true;
+                    valueIsModEnabled = true;
+                    HandleFiles.writeConfig();
                     command.getSource().sendSystemMessage(literal("NetworkLogger enabled!"));
                     return 0;
                 }))
@@ -469,7 +470,8 @@ public class CommandsMixin {
 
                 //networklogger disable
                 .then(Commands.literal("disable").requires(source -> source.hasPermission(4)).executes(command -> {
-                    enabled = false;
+                    valueIsModEnabled = false;
+                    HandleFiles.writeConfig();
                     command.getSource().sendSystemMessage(literal("NetworkLogger disabled!"));
                     return 0;
                 }))

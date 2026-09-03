@@ -51,6 +51,7 @@ public class HandleFiles {
             object.addProperty(stringConnectionStable, valueConnectionStable / 60);
 
             object.addProperty(stringDeleteFileOnExit, valueDeleteFileOnExit);
+            object.addProperty(stringIsModEnabled, valueIsModEnabled);
 
             gson.toJson(object, writer);
         } catch (Exception exception) {
@@ -77,6 +78,8 @@ public class HandleFiles {
 
             if (object.has(stringConnectionStable)) valueConnectionStable = object.get(stringConnectionStable).getAsInt() * 60; else missing = true;
             if (object.has(stringDeleteFileOnExit)) valueDeleteFileOnExit = object.get(stringDeleteFileOnExit).getAsBoolean(); else missing = true;
+            if (object.has(stringIsModEnabled)) valueIsModEnabled = object.get(stringIsModEnabled).getAsBoolean(); else missing = true;
+
         } catch (Throwable exception) {
             Main.logger.error("NetworkLogger failed to read the config file", exception);
         }

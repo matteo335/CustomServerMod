@@ -14,8 +14,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class ServerPlayerMixin {
 
     @Inject(method = "tick", at = @At("TAIL"))
-    public void test(CallbackInfo ci) {
-        if (!ModValues.enabled) return;
+    public void tick$tail(CallbackInfo ci) {
+        if (!ConfigValues.valueIsModEnabled) return;
         String player = ((ServerPlayer) (Object) this).getName().getString();
 
         if (ModValues.playTime.getOrDefault(player,0.0) < ConfigValues.valueConnectionStable) ModValues.playTime.merge(player, 0.05, Double::sum);

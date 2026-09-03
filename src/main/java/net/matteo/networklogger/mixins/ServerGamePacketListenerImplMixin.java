@@ -28,19 +28,17 @@ public abstract class ServerGamePacketListenerImplMixin {
     private void init$networklogger(MinecraftServer pServer, Connection pConnection, ServerPlayer pPlayer, CallbackInfo ci) {
         try {
             //noinspection ConstantConditions
-            if (!enabled || pConnection.channel() == null) return;
+            if (!valueIsModEnabled || pConnection.channel() == null) return;
             pConnection.channel().attr(channelPlayer).set(pPlayer);
-        } catch (Throwable throwable) {
-            Main.logger.error("Error in ServerGamePacketListenerImplMixin init$networklogger. Please report it to author of Networklogger.");
-            //noinspection CallToPrintStackTrace
-            throwable.printStackTrace();
+        } catch (Throwable exception) {
+            Main.logger.error("Error in ServerGamePacketListenerImplMixin init$networklogger. Please report it to author of NetworkLogger.", exception);
         }
     }
 
     @Inject(method = "sendPlayerChatMessage", at = @At("TAIL"))
     private void sendPlayerChatMessage$networklogger(PlayerChatMessage pChatMessage, ChatType.Bound pBoundType, CallbackInfo ci) {
         //noinspection ConstantValue
-        if (!enabled || pChatMessage.sender() != getPlayer().getUUID() || getPlayer().connection == null) return;
+        if (!valueIsModEnabled || pChatMessage.sender() != getPlayer().getUUID() || getPlayer().connection == null) return;
         String message = pChatMessage.decoratedContent().getString();
 
         if ((message.contains(" ping") || message.contains(" lag")) && valueWriteIfContains) HandleFiles.writeGlobal(getPlayer(), message);

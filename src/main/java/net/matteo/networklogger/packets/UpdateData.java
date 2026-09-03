@@ -39,8 +39,6 @@ public class UpdateData {
 
     @SuppressWarnings("DataFlowIssue")
     public static void updateData(@Nullable ServerPlayer player, Packet<?> packet, Integer size) {
-        if (!enabled) return;
-
         String ps = player != null ? player.getName().getString() : null;
 
         try {
